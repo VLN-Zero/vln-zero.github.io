@@ -221,6 +221,26 @@
   </div>
 </section> -->
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Framework Overview</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/vln-zero-framework.png">
+
+          <p>Overview of VLN-Zero. The framework consists of two main phases: exploration and deployment.
+    In the exploration phase (gray), the VLM guides a robot agent to interact with the environment under user-specified constraints, producing both a action at each step and ultimately yielding a scene graph (top-down map). 
+    In the deployment phase (blue), a planner leverages the generated scene graph, visual observations, and constraints to generate constraint-satisfying actions for a task prompt. During execution, a caching module further accelerates execution by reusing previously validated trajectories via compositional task decomposition.</p>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -242,7 +262,7 @@
             execution module accelerates adaptation by reusing previously computed task–location trajectories.
           </p>
           <p>
-            By combining rapid exploration, symbolic reasoning, and cache-enabled execution, the proposed framework overcomes the computational inefficiency and poor generalization of prior vision-language navigation methods, enabling robust and scalable decision-making in unseen environments. \OURS \ achieves 2x higher success rate compared to state-of-the-art zero-shot models, outperforms most fine-tuned baselines, and reaches goal locations in half the time with 55\% fewer VLM calls on average compared to state-of-the-art models across diverse environments.
+            By combining rapid exploration, symbolic reasoning, and cache-enabled execution, the proposed framework overcomes the computational inefficiency and poor generalization of prior vision-language navigation methods, enabling robust and scalable decision-making in unseen environments. VLN-Zero achieves 2x higher success rate compared to state-of-the-art zero-shot models, outperforms most fine-tuned baselines, and reaches goal locations in half the time with 55% fewer VLM calls on average compared to state-of-the-art models across diverse environments.
           </p>
         </div>
       </div>
@@ -263,26 +283,7 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Framework Overview</h2>
-        <div class="content has-text-justified">
-          <img src="./static/images/vln-zero-framework.png">
 
-          <p>Overview of VLN-Zero. The framework consists of two main phases: exploration and deployment.
-    In the exploration phase (gray), the VLM guides a robot agent to interact with the environment under user-specified constraints, producing both a action at each step and ultimately yielding a scene graph (top-down map). 
-    In the deployment phase (blue), a planner leverages the generated scene graph, visual observations, and constraints to generate constraint-satisfying actions for a task prompt. During execution, a caching module further accelerates execution by reusing previously validated trajectories via compositional task decomposition.</p>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Concurrent Work. -->
-
-  </div>
-</section>
 
 <!-- <section class="section">
   <div class="container is-max-desktop">
