@@ -167,7 +167,7 @@ body {
 .comparison {
   text-align: center;
   margin: 2rem auto;
-  max-width: 900px;
+  max-width: 1400px;
 }
 
 .comparison .pair {
@@ -178,7 +178,7 @@ body {
 }
 
 .comparison img {
-  max-width: 100%;
+  width: 100%;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
@@ -186,7 +186,7 @@ body {
 .examples {
   text-align: center;
   margin: 2rem auto;
-  max-width: 1000px;
+  max-width: 1400px;
 }
 
 /* .scroll-gallery {
@@ -206,14 +206,18 @@ body {
 
 .scroll-gallery {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
-  gap: 1rem;
-  overflow-x: hidden; /* Hide the horizontal scroll */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  overflow-x: hidden;
   padding: 1rem;
 }
 
 .scroll-gallery img {
-  max-height: 200px;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  justify-self: center; /* center within grid cell */
+  align-self: center;   /* center within grid cell */
   border-radius: 12px;
-  object-fit: cover; /* Ensure images cover the space properly */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
