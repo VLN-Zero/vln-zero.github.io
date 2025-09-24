@@ -142,17 +142,26 @@ $(document).ready(function() {
 
     // Ensure GIFs replay by periodically resetting src (cache-busting)
     function enableGifLoop($imgs, intervalMs) {
-      var period = intervalMs || 8000; // fallback interval if GIF duration unknown
       $imgs.each(function() {
         var img = this;
         var baseSrc = img.getAttribute('data-base-src') || img.getAttribute('src');
         // Strip prior cache-busting if present
         baseSrc = baseSrc.split('?')[0];
         img.setAttribute('data-base-src', baseSrc);
-        setInterval(function() {
-          var ts = Date.now();
-          img.src = baseSrc + '?t=' + ts;
-        }, period);
+
+        function scheduleNext() {
+          var declaredDuration = parseInt(img.getAttribute('data-duration-ms') || '', 10);
+          var period = intervalMs || (isNaN(declaredDuration) ? 8000 : (declaredDuration + 1000));
+          setTimeout(function() {
+            var ts = Date.now();
+            // After reload, schedule again
+            $(img).one('load', function(){ scheduleNext(); });
+            img.src = baseSrc + '?t=' + ts;
+          }, period);
+        }
+
+        // Start independent loop for this image
+        scheduleNext();
       });
     }
 
