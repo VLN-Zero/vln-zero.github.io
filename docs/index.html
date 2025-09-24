@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="By combining rapid exploration, symbolic reasoning, and cache-enabled execution, VLN-Zero overcomes the computational inefficiency and poor generalization of prior vision-language navigation methods, enabling robust and scalable decision-making in unseen environments.">
+  <meta name="keywords" content="VLN-Zero, Navigation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VLN-Zero: Rapid Exploration and Cache-Enabled Neurosymbolic Vision-Language Planning for Zero-Shot Transfer in Robot Navigation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">VLN-Zero:</h1>
+          <h2 class="title publication-title">Rapid Exploration and Cache-Enabled Neurosymbolic <b>V</b>ision-<b>L</b>anguage Planning for <b>Zero</b>-Shot Transfer in Robot <b>N</b>avigation</h2>
+          <div class="is-size-5 publication-authors">
+            <!-- <span class="author-block">
+              <a href="some link">First Last</a><sup>1</sup>,</span>
+            <span class="author-block"> -->
+          </div>
+
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Institution 1,</span>
+            <span class="author-block"><sup>2</sup>Institution 2</span>
+          </div> -->
+
+          <!-- <div class="column has-text-centered">
+            <div class="publication-links">
+              
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><br>Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Rapid adaptation in unseen environments is essential for scalable real-world autonomy,
+            yet existing approaches rely on exhaustive exploration or rigid navigation policies that fail to generalize.
+            We present VLN-Zero, a two-phase vision-language navigation framework that leverages vision-language models
+            to efficiently construct symbolic scene graphs and enable zero-shot neurosymbolic navigation.
+          </p>
+          <p>
+            In the exploration phase, structured prompts guide VLM-based search toward informative and diverse trajectories,
+            yielding compact scene graph representations. In the deployment phase, a neurosymbolic planner reasons over
+            the scene graph and environmental observations to generate executable plans, while a cache-enabled
+            execution module accelerates adaptation by reusing previously computed task–location trajectories.
+          </p>
+          <p>
+            By combining rapid exploration, symbolic reasoning, and cache-enabled execution, the proposed framework overcomes the computational inefficiency and poor generalization of prior vision-language navigation methods, enabling robust and scalable decision-making in unseen environments. VLN-Zero achieves 2x higher success rate compared to state-of-the-art zero-shot models, outperforms most fine-tuned baselines, and reaches goal locations in half the time with 55% fewer VLM calls on average compared to state-of-the-art models across diverse environments.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"><br>Framework Overview</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/vln-zero-framework.png">
+
+          <p>Overview of VLN-Zero. The framework consists of two main phases: exploration and deployment.
+    In the exploration phase (gray), the VLM guides a robot agent to interact with the environment under user-specified constraints, producing both a action at each step and ultimately yielding a scene graph (top-down map). 
+    In the deployment phase (blue), a planner leverages the generated scene graph, visual observations, and constraints to generate constraint-satisfying actions for a task prompt. During execution, a caching module further accelerates execution by reusing previously validated trajectories via compositional task decomposition.</p>
+            <br>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay controls muted loop playsinline height="100%">
+        <source src="./static/videos/ICRA_2026_VLN-Zero-Video.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="comparison">
+  <h2 class="title is-4">Comparison Between Navigation Guided by GPT-4.1 and GPT-5</h2>
+  <div class="pair">
+    <div>
+      <h4>GPT-4.1</h4>
+      <img src="./static/gifs/vln-zero-gifs/331gpt4.1crop.gif" alt="331 GPT-4.1 navigation">
+    </div>
+    <div>
+      <h4>GPT-5</h4>
+      <img src="./static/gifs/vln-zero-gifs/331gpt5crop.gif" alt="331 GPT-5 navigation">
+    </div>
+  </div>
+  <div class="pair">
+    <div>
+      <h4>GPT-4.1</h4>
+      <img src="./static/gifs/vln-zero-gifs/800gpt4.1crop.gif" alt="800 GPT-4.1 navigation">
+    </div>
+    <div>
+      <h4>GPT-5</h4>
+      <img src="./static/gifs/vln-zero-gifs/800gpt5crop.gif" alt="800 GPT-5 navigation">
+    </div>
+  </div>
+</section>
+
+<section class="examples">
+  <h2 class="title is-4">Examples of Successful Navigation</h2>
+  <div class="scroll-gallery">
+    <img src="./static/gifs/vln-zero-gifs/51.gif" alt="Navigation example 51">
+    <img src="./static/gifs/vln-zero-gifs/346.gif" alt="Navigation example 346">
+    <img src="./static/gifs/vln-zero-gifs/371.gif" alt="Navigation example 371">
+    <img src="./static/gifs/vln-zero-gifs/944.gif" alt="Navigation example 944">
+    <img src="./static/gifs/vln-zero-gifs/1139.gif" alt="Navigation example 1139">
+    <img src="./static/gifs/vln-zero-gifs/1278.gif" alt="Navigation example 1278">
+    <img src="./static/gifs/vln-zero-gifs/1455.gif" alt="Navigation example 1455">
+    <img src="./static/gifs/vln-zero-gifs/1568.gif" alt="Navigation example 1568">
+    <img src="./static/gifs/vln-zero-gifs/1607.gif" alt="Navigation example 1607">
+    <img src="./static/gifs/vln-zero-gifs/1791.gif" alt="Navigation example 1791">
+  </div>
+</section>
+
+<!--
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>bibtex will go here</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <!--
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+      -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content bottom-attr-text">
+          <p style="font-size: 0.85rem;">
+            We express our thanks towards the authors of <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> for the template of this website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
