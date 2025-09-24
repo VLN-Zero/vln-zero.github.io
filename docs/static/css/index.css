@@ -189,7 +189,7 @@ body {
   max-width: 1000px;
 }
 
-.scroll-gallery {
+/* .scroll-gallery {
   display: flex;
   gap: 1rem;
   overflow-x: auto;
@@ -202,6 +202,18 @@ body {
   max-height: 200px;
   border-radius: 12px;
   scroll-snap-align: center;
+} */
+
+.scroll-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
+  gap: 1rem;
+  overflow-x: hidden; /* Hide the horizontal scroll */
+  padding: 1rem;
 }
 
-
+.scroll-gallery img {
+  max-height: 200px;
+  border-radius: 12px;
+  object-fit: cover; /* Ensure images cover the space properly */
+}
