@@ -75,4 +75,89 @@ $(document).ready(function() {
 
     bulmaSlider.attach();
 
+    // Arrange example GIFs so similar heights are adjacent
+    function arrangeExamplesByHeight() {
+      var $gallery = $('.scroll-gallery');
+      if ($gallery.length === 0) return;
+
+      var $imgs = $gallery.find('img');
+      var total = $imgs.length;
+      if (total === 0) return;
+
+      var loadedCount = 0;
+      var items = [];
+
+      function tryArrange() {
+        if (loadedCount < total) return;
+        // Group by exact height so same-height GIFs share rows
+        var groupsByHeight = {};
+        items.forEach(function(it){
+          var key = String(it.h);
+          if (!groupsByHeight[key]) groupsByHeight[key] = [];
+          groupsByHeight[key].push(it);
+        });
+        var heights = Object.keys(groupsByHeight).map(function(k){ return parseInt(k, 10); });
+        heights.sort(function(a, b){ return a - b; });
+        var leftovers = [];
+        heights.forEach(function(h){
+          var group = groupsByHeight[String(h)];
+          for (var i = 0; i < group.length; i += 2) {
+            var a = group[i];
+            var b = group[i + 1];
+            if (a && b) {
+              $gallery.append(a.el);
+              $gallery.append(b.el);
+            } else if (a) {
+              leftovers.push(a);
+            }
+          }
+        });
+        // Pair any leftovers (no exact match available)
+        for (var j = 0; j < leftovers.length; j += 2) {
+          if (leftovers[j]) $gallery.append(leftovers[j].el);
+          if (leftovers[j + 1]) $gallery.append(leftovers[j + 1].el);
+        }
+      }
+
+      $imgs.each(function(i) {
+        var img = this;
+        var originalIndex = i;
+        function onReady() {
+          items.push({ el: img, h: img.naturalHeight || img.height || 0, idx: originalIndex });
+          loadedCount += 1;
+          tryArrange();
+        }
+        if (img.complete && img.naturalHeight) {
+          onReady();
+        } else {
+          $(img).one('load', onReady).one('error', function(){ onReady(); });
+        }
+      });
+    }
+
+    arrangeExamplesByHeight();
+    // Also rearrange after a short delay in case of cached async loads
+    setTimeout(arrangeExamplesByHeight, 500);
+    setTimeout(arrangeExamplesByHeight, 1500);
+
+    // Ensure GIFs replay by periodically resetting src (cache-busting)
+    function enableGifLoop($imgs, intervalMs) {
+      var period = intervalMs || 8000; // fallback interval if GIF duration unknown
+      $imgs.each(function() {
+        var img = this;
+        var baseSrc = img.getAttribute('data-base-src') || img.getAttribute('src');
+        // Strip prior cache-busting if present
+        baseSrc = baseSrc.split('?')[0];
+        img.setAttribute('data-base-src', baseSrc);
+        setInterval(function() {
+          var ts = Date.now();
+          img.src = baseSrc + '?t=' + ts;
+        }, period);
+      });
+    }
+
+    // Apply looping to both examples and comparison GIFs
+    enableGifLoop($('.scroll-gallery img'));
+    enableGifLoop($('.comparison img'));
+
 })
