@@ -41,6 +41,7 @@ conda install habitat-sim-0.1.7-py3.8_headless_linux_856d4b08c1a2632626bf0d205bf
 # you can remove the tar after running this
 
 cd habitat-lab/
+# If pip's dependency resolver fails on the following instructions, run `python -m pip install --upgrade pip` and then try again.
 python -m pip install -r requirements.txt
 python -m pip install -r habitat_baselines/rl/requirements.txt # this should already have been modified in step 2
 python -m pip install -r habitat_baselines/rl/ddppo/requirements.txt
