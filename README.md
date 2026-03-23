@@ -12,7 +12,8 @@ Rapid Exploration and Cache-Enabled Neurosymbolic Vision-Language Planning for Z
 1. Clone this repo
 
 ```bash
-cd VLN-Zero
+git clone --recursive https://github.com/VLN-Zero/vln-zero.github.io.git
+cd vln-zero.github.io
 ```
 
 2. Make changes to the `habitat-lab` code
@@ -27,13 +28,33 @@ In `habitat-lab/habitat/utils/visualizations/maps.py`, change lines 425-426 to t
 
 Also, in `habitat-lab/habitat_baselines/rl/requirements.txt`, remove lines 3-4 (the `tensorflow==1.13.1` requirement is not needed).
 
-3. Follow the VLN-CE installation guide.
+3. Setup your Conda environment
 
-Install both Habitat-Lab and VLN-CE following the setup steps provided [here](https://github.com/jacobkrantz/VLN-CE).
+Use the following instructions to install all necessary dependencies.
+
+```bash
+conda create -n vln-zero python=3.8
+source $(conda info --base)/etc/profile.d/conda.sh
+conda activate vln-zero
+wget https://anaconda.org/aihabitat/habitat-sim/0.1.7/download/linux-64/habitat-sim-0.1.7-py3.8_headless_linux_856d4b08c1a2632626bf0d205bf46471a99502b7.tar.bz2
+conda install habitat-sim-0.1.7-py3.8_headless_linux_856d4b08c1a2632626bf0d205bf46471a99502b7.tar.bz2
+# you can remove the tar after running this
+
+cd habitat-lab/
+python -m pip install -r requirements.txt
+python -m pip install -r habitat_baselines/rl/requirements.txt # this should already have been modified in step 2
+python -m pip install -r habitat_baselines/rl/ddppo/requirements.txt
+python -m pip install -e .
+
+cd ../
+python -m pip install tokenizers==0.19.1
+python -m pip install tensorboard
+python -m pip install -r requirements.txt
+```
 
 4. Download data
 
-Following the steps from the VLN-CE project, download the MP3D, R2R, and RxR datasets. The final structure should look like something like this.
+Following the steps from the [VLN-CE](https://github.com/jacobkrantz/VLN-CE) project, download the MP3D, R2R, and RxR datasets. The final structure should look like something like this.
 
 ```
 VLN-Zero
